@@ -1,7 +1,7 @@
 import { type PokemonCard } from "../types/pokemon";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "./ui/card";
 
-// Colores por tipo para visual básico (bonus: diseño por colores)
+// Colores por tipo
 const TYPE_COLORS: Record<string, string> = {
   fire: "bg-orange-400",
   water: "bg-blue-400",
@@ -40,7 +40,7 @@ export default function PokemonCard({ pokemon }: Props) {
           <img src={pokemon.image} alt={pokemon.name} className="w-28 h-28" loading="lazy" />
           <p className="capitalize font-semibold text-gray-800">{pokemon.name}</p>
         </CardContent>
-        <CardFooter className="gap-1">
+        <CardFooter className="gap-1 self-center">
           {pokemon.types.map((type) => (
           <span
             key={type}

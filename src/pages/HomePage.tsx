@@ -13,7 +13,7 @@ export default function HomePage() {
       try {
         setLoading(true);
         setError(null);
-        const data = await fetchPokemonList(20); // RF01: al menos 20
+        const data = await fetchPokemonList(20);
         setPokemon(data);
       } catch (err) {
         setError("No se pudieron cargar los Pokémon. Intenta de nuevo.");
