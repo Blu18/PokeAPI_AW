@@ -42,15 +42,20 @@ export default function HomePage() {
   }
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
-        Pokédex
-      </h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {pokemon.map((p) => (
-          <PokemonCard key={p.id} pokemon={p} />
-        ))}
-      </div>
-    </main>
+    <>
+      <header className="w-full flex flex-col">
+          <div className="w-full flex flex-row p-4 items-center bg-secondary">
+            <h1 className="flex flex-1 justify-center text-4xl font-bold text-secondary-foreground">Pokédex</h1>
+          </div>
+          <div className="bg-primary h-5"/>
+        </header>
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          {pokemon.map((p) => (
+            <PokemonCard key={p.id} pokemon={p} />
+          ))}
+        </div>
+      </main>
+    </>
   );
 }

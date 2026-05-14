@@ -1,5 +1,6 @@
 import axios from "axios";
-import type { PokemonListResponse, PokemonCard } from "../types/pokemon";
+import type { PokemonListResponse, PokemonCard, Pokemon } from "../types/pokemon";
+import type { Specie } from "@/types/species";
 
 const BASE_URL = "https://pokeapi.co/api/v2";
 
@@ -35,3 +36,17 @@ export const fetchPokemonList = async ( limit = 30,  offset = 0 ): Promise<Pokem
 
   return cards;
 };
+
+export const getPokemon = async (id: string | undefined): Promise<Pokemon> => {
+  if (!id) throw new Error("El id del pokemon es obligatorio");
+
+  const { data } = await axios.get<Pokemon>(`${BASE_URL}/pokemon/${id}`);
+  return data;
+}
+
+export const getSpecie = async (id: string | undefined): Promise<Specie> => {
+  if (!id) throw new Error("El id del pokemon es obligatorio");
+
+  const { data } = await axios.get<Specie>(`${BASE_URL}/pokemon-species/${id}`);
+  return data;
+}
