@@ -1,23 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import { type PokemonCard } from "../types/pokemon";
 import { Button } from "./ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "./ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
 import { TYPE_COLORS } from "@/types/tipoColores";
+import BotonFavorito from "./BotonFavorito";
 
 interface Props {
   pokemon: PokemonCard;
+  isFavorito: boolean;
+  onToggleFavorito: () => void;
+  onClick: () => void;   
 }
 
-export default function PokemonCard({ pokemon }: Props) {
+export default function PokemonCard({ pokemon, isFavorito, onToggleFavorito, onClick }: Props) {
   const navigate = useNavigate();
 
   return (
     <>
       <Card className="shadow-md">
         <CardHeader>
-          <CardDescription>
-            #{pokemon.id}
-          </CardDescription>
+          <div className="w-full max-w-sm flex items-start justify-between">
+            <span className="text-sm text-gray-500">#{pokemon.id}</span>
+            <div className="shrink-0" onClick={onClick}>
+              <BotonFavorito isFavorito={isFavorito} onToggle={onToggleFavorito} />
+            </div>
+          </div>
         </CardHeader>
         <CardContent className="w-full max-w-sm flex flex-col items-center">
           <Button variant={"ghost"} size={"lg"} className="h-full flex flex-col" onClick={() => navigate(`/detalles-pokemon/${pokemon.id}`)}>

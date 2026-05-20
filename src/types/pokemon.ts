@@ -10,6 +10,15 @@ export interface PokemonListItem {
   url: string;
 }
 
+export interface TypeListResponse {
+  count: number;
+  results: { name: string; url: string }[];
+}
+
+export interface FavoritesMap {
+  [id: number]: boolean;
+}
+
 export interface PokemonCard {
   id: number;
   name: string;

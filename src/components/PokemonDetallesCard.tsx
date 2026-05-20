@@ -17,8 +17,8 @@ export default function PokemonDetalleCard({ pokemon, specie }: Props) {
     return (
         <>
             <Card className="shadow-md w-full">
-                <CardContent className="grid grid-flow-col grid-rows-6 self-center gap-4">
-                    <div className="row-start-1 row-span-2 flex flex-col items-center justify-center gap-2">
+                <CardContent className="grid grid-flow-col grid-rows-6  grid-cols-3 self-center gap-4">
+                    <div className="row-start-1 row-span-2 col-satrt-1 col-span-1 flex flex-col items-center justify-center gap-2">
                         <img src={pokemon.sprites.other?.["official-artwork"].front_default} alt={pokemon.name} className="w-64 h-64" loading="lazy" />
                         <div className="flex flex-wrap justify-center gap-1 mt-2">
                             {pokemon.types.map((type) => (
@@ -28,7 +28,7 @@ export default function PokemonDetalleCard({ pokemon, specie }: Props) {
                             ))}
                         </div>
                     </div>
-                    <div className="row-start-1 col-span-1">
+                    <div className="row-start-1 row-span-1 col-start-2 col-span-2">
                         <p>#{pokemon.id}</p>
                         <h3 className="capitalize font-bold text-2xl">{pokemon.name}</h3>
                         <p>{specie.flavor_text_entries[0].flavor_text}</p>
