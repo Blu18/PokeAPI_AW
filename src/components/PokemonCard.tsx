@@ -4,6 +4,9 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
 import { TYPE_COLORS } from "@/types/tipoColores";
 import BotonFavorito from "./BotonFavorito";
+import BotonComparador from "./BotonComparador";
+import { useComparadorStore } from "@/storage/comparadorStore";
+import { getPokemon } from "@/services/pokeapi";
 
 interface Props {
   pokemon: PokemonCard;
@@ -14,6 +17,29 @@ interface Props {
 
 export default function PokemonCard({ pokemon, isFavorito, onToggleFavorito, onClick }: Props) {
   const navigate = useNavigate();
+
+  const { add, remove, isSelected, slots } = useComparadorStore();
+  const isFull = slots[0] !== null && slots[1] !== null;
+
+  const handleAddToComparator = async () => {
+    if (isFull) {
+      navigate("/comparador");
+      return;
+    }
+
+    // Si ya está seleccionado, quítalo
+    if (isSelected(pokemon.id)) {
+      remove(pokemon.id);
+      return;
+    }
+    // Si no, pide el detalle completo y añádelo
+    try {
+      const detail = await getPokemon(String(pokemon.id));
+      add(detail);
+    } catch (err) {
+      console.error("Error al agregar al comparador:", err);
+    }
+  };
 
   return (
     <>
@@ -43,6 +69,9 @@ export default function PokemonCard({ pokemon, isFavorito, onToggleFavorito, onC
             {type}
           </span>
         ))}
+        <div>
+          <BotonComparador isSelected={isSelected(pokemon.id)} isFull={isFull && !isSelected(pokemon.id)} onAdd={handleAddToComparator} onRemove={() => remove(pokemon.id)}/>
+        </div>
         </CardFooter>
       </Card>
     </>

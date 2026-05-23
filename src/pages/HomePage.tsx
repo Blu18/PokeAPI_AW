@@ -3,7 +3,7 @@ import PokemonCard from "../components/PokemonCard";
 import SearchBar from "@/components/SearchBar";
 import FiltroDeTipo from "@/components/FitroDeTipo";
 import { usePokemonList } from "@/hooks/useListaPokemon";
-import {  useFavoritosStore } from "@/storage/favoritoStore.";
+import { useFavoritosStore } from "@/storage/favoritoStore";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import type { PokemonCard as PokemonCardType } from "@/types/pokemon";
