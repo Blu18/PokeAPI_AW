@@ -12,7 +12,7 @@ interface Props {
   pokemon: PokemonCard;
   isFavorito: boolean;
   onToggleFavorito: () => void;
-  onClick: () => void;   
+  onClick: () => void;
 }
 
 export default function PokemonCard({ pokemon, isFavorito, onToggleFavorito, onClick }: Props) {
@@ -58,20 +58,21 @@ export default function PokemonCard({ pokemon, isFavorito, onToggleFavorito, onC
             <p className="capitalize font-semibold text-gray-800">{pokemon.name}</p>
           </Button>
         </CardContent>
-        <CardFooter className="gap-1 self-center">
-          {pokemon.types.map((type) => (
-          <span
-            key={type}
-            className={`text-white text-xs font-medium px-2 py-0.5 rounded-full capitalize ${
-              TYPE_COLORS[type] ?? "bg-gray-400"
-            }`}
-          >
-            {type}
-          </span>
-        ))}
-        <div>
-          <BotonComparador isSelected={isSelected(pokemon.id)} isFull={isFull && !isSelected(pokemon.id)} onAdd={handleAddToComparator} onRemove={() => remove(pokemon.id)}/>
-        </div>
+        <CardFooter className="gap-1 self-center flex flex-col">
+          <div className="flex flex-row gap-1">
+            {pokemon.types.map((type) => (
+              <span
+                key={type}
+                className={`text-white text-xs font-medium px-2 py-0.5 rounded-full capitalize ${TYPE_COLORS[type] ?? "bg-gray-400"
+                  }`}
+              >
+                {type}
+              </span>
+            ))}
+          </div>
+          <div>
+            <BotonComparador isSelected={isSelected(pokemon.id)} isFull={isFull && !isSelected(pokemon.id)} onAdd={handleAddToComparator} onRemove={() => remove(pokemon.id)} />
+          </div>
         </CardFooter>
       </Card>
     </>
