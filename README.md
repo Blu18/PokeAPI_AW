@@ -53,3 +53,29 @@ Abrir `http://localhost:5173` en el navegador.
 - Favoritos con persistencia en localStorage con Zustand
 - Comparador de estadísticas base entre dos pokemones
 - Estados de carga, error y sin resultados
+
+## Capturas de pantalla
+
+| Listado |
+|---------|
+| ![listado](./screenshots/listado.png) |
+
+| Detalles |
+|---------|
+| ![detalles](./screenshots/detalles.png) |
+
+| Favoritos |
+|---------|
+| ![favoritos](./screenshots/favoritos.png) |
+
+| Busqueda |
+|---------|
+| ![busqueda](./screenshots/busqueda.png) |
+
+| Filtrado |
+|---------|
+| ![filtrado](./screenshots/filtrado.png) |
+
+| Comparador |
+|---------|
+| ![comparador](./screenshots/comparador.png) |
